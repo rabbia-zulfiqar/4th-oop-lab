@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+class alpha{
+private:
+    double num1,num2;
+public:
+    void input() {
+        cout <<"Enter two numbers:";
+        cin >>num1>>num2;
+    }
+    friend double sum(alpha a);
+    friend double sub(alpha a);
+    friend double mul(alpha a);
+    friend double div(alpha a);
+};
+double sum(alpha a){
+    return a.num1+a.num2;
+}
+double sub(alpha a){
+    return a.num1-a.num2;
+}
+double mul(alpha a){
+    return a.num1*a.num2;
+}
+double div(alpha a){
+    if (a.num2!=0)
+        return a.num1/a.num2;
+    else {
+        cout <<"Error!"<<endl;
+        return 0;
+    }
+}
+int main() {
+    alpha obj;
+    obj.input();
+    cout <<"Sum:"<<sum(obj)<<endl;
+    cout <<"Difference:"<<sub(obj)<<endl;
+    cout <<"Product:"<<mul(obj)<<endl;
+    cout <<"Division:"<<div(obj)<<endl;
+    return 0;
+}
