@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Student 
+{
+private:
+    int studentID;
+    string name;
+    int totalMarks;
+public:
+    Student(int id,string n,int marks) 
+{
+        studentID=id;
+        name=n;
+        totalMarks=marks;
+    }
+ 
+    void displayBasicInfo() 
+{
+        cout<<"Student ID:"<<studentID<<endl;
+        cout<<"Name:"<<name<<endl;
+    }
+ 
+    friend void compareTotalMarks(Student s1,Student s2);
+    friend class Teacher;
+};
+ 
+void compareTotalMarks(Student s1,Student s2)
+ {
+    if (s1.totalMarks>s2.totalMarks) 
+{
+        cout<<s1.name<< " has higher total marks. "<<endl;
+    } 
+else 
+{
+        cout<<s2.name<< " has higher total marks."<<endl;
+    }
+}
+class Teacher 
+{
+public:
+    void updateTotalMarks(Student &s,int newMarks) 
+{
+        s.totalMarks=newMarks;
+        cout<<"Total marks updated!"<<endl;
+    }
+};
+int main()
+{
+    Student s1(1,"Rabbia",80);
+    Student s2(2,"Fatima",85);
+    s1.displayBasicInfo();
+    cout<<endl;
+    compareTotalMarks(s1,s2);
+    cout<<endl;
+    Teacher t;
+    t.updateTotalMarks(s1,90);
+    return 0;
+}
