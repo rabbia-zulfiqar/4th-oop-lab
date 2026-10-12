@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+class beta;
+class alpha{
+private:
+    int num1;
+public:
+    alpha(){
+        num1 = 3;
+    }
+    friend int add(alpha a,beta b);
+};
+class beta{
+private:
+    int num2;
+public:
+    beta(){
+        num2 = 7; 
+    }
+    friend int add(alpha a,beta b);
+};
+int add(alpha a, beta b){
+    return a.num1 + b.num2;
+}
+int main(){
+    alpha obj1;
+    beta obj2;
+    cout <<"Sum of data members:"<<add(obj1,obj2)<<endl;
+    return 0;
+}
